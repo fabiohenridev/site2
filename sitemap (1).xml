@@ -9,7 +9,18 @@
 
 <url>
   <loc>https://www.blogueirando.online/</loc>
-  <lastmod>2025-03-10T19:50:33+00:00</lastmod>
+  <lastmod>2025-03-11T01:26:27+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://www.blogueirando.online/home.html</loc>
+  <lastmod>2025-03-11T01:26:27+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.blogueirando.online/index.html</loc>
+  <lastmod>2025-03-11T01:26:27+00:00</lastmod>
+  <priority>0.64</priority>
 </url>
 
 
