@@ -1,11 +1,4 @@
 {
-    "redirects": [
-      {
-        "source": "http://blogueirando.online/:path*",
-        "destination": "https://blogueirando.online/:path*",
-        "permanent": true
-      }
-    ],
     "headers": [
       {
         "source": "/sitemap.xml",
