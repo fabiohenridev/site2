@@ -9,27 +9,26 @@
 
 <url>
   <loc>https://www.blogueirando.online/</loc>
-  <lastmod>2025-03-12T01:36:01+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
   <loc>https://www.blogueirando.online/home.html</loc>
-  <lastmod>2025-03-12T01:36:01+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://www.blogueirando.online/index.html</loc>
-  <lastmod>2025-03-12T01:36:01+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.blogueirando.online/Sobre.html</loc>
-  <lastmod>2025-03-12T01:36:02+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://www.blogueirando.online/artigo1.html</loc>
-  <lastmod>2025-03-12T01:36:02+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.blogueirando.online/artigo2.html</loc>
   <priority>0.64</priority>
 </url>
 
