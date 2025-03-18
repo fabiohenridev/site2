@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+ <!-- Google tag (gtag.js) -->
+ <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8Y59HKRC5"></script>
+ <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag() { dataLayer.push(arguments); }
+     gtag('js', new Date());
+
+     gtag('config', 'G-Y8Y59HKRC5');
+ </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de juros simples</title>
+    <meta name="keywords" content="Como calcular juros simples, calculadora de juros simples, juros simples, resolver juros simples, juros, calculadora para juros simples">
+    <meta name="description" content="Calculadora de juros simples. Calcule agora mesmo de forma rápida !">
+    <link rel="icon" href="https://www.blogueirando.online/mouth.png" type="image/png">
+    <meta name="robots" content="index, follow">
+    
+    <style>
+
+body, html{
+    background-color: #ffffff;
+}
+
+       section{
+        height: 800px;
+        border-bottom: 1px solid gray;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        background-color: aliceblue;
+       
+       }
+       h1, h3, a{
+        color: rgb(0, 0, 0);
+       }
+
+        h2{
+           margin: 20px;
+        }
+
+        p{
+            padding: 20px;
+        }
+
+        h1{
+            padding: 30px;
+            text-align: center;
+        }
+
+        button{
+            margin: 20px;
+            height: 40px;
+            background-color: rgb(23, 23, 23);
+            font-size: 20px;
+            color: white;
+            border-radius: 10px;
+        }
+
+        p, li{
+            font-size: 20px;
+        }
+
+       input{
+        height: 80px;
+        margin: 20px;
+        border-radius: 10px;
+        border: none;
+       }
+
+      input:focus{
+        outline: none;
+      }
+
+       footer{
+        height: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       }
+
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+       *{
+    font-family: "Poppins", sans-serif;
+    font-display: swap;
+}
+    </style>
+</head>
+<body>
+    <a href="home.html">Voltar para o blog</a>
+<header>
+    <h1>Calculadora de juros simples</h1>
+</header>
+<section>
+
+    <input id="Number1" type="number" placeholder="Capital inicial">
+    <input id="Number2" type="number" placeholder="Taxa (%)">
+    <input id="Number3" type="number" placeholder="Tempo (em meses)">
+    <input id="Number4" type="number" placeholder="Juros">
+    <button onclick="Calcular()">Calcular</button>
+
+    <h2>O juros é: </h2>
+    <p id="ValorJuros"></p>
+    <p id="Total"></p>
+
+</section>
+<div class="Explicacao">
+
+
+    <p>Os <strong>juros simples</strong> são um tipo de cálculo de juros onde o valor dos juros é constante ao longo do tempo, ou seja, é calculado apenas sobre o valor principal (capital inicial). Esse tipo de juros é bastante utilizado em operações financeiras de curto prazo e quando as condições do empréstimo ou investimento são simples.</p>
+
+    <p><strong>Benefícios dos Juros Simples:</strong></p>
+    <ul>
+        <li><strong>Facilidade de Cálculo:</strong> O cálculo dos juros simples é muito mais simples e direto em comparação com os juros compostos, o que torna a compreensão e o planejamento financeiro mais fáceis.</li>
+        <li><strong>Previsibilidade:</strong> Como os juros são calculados apenas sobre o valor inicial, é mais fácil prever o montante final a ser pago ou recebido.</li>
+        <li><strong>Baixo Custo em Empréstimos de Curto Prazo:</strong> Como os juros não se acumulam sobre os juros anteriores, o custo total de um empréstimo com juros simples pode ser menor em comparação aos juros compostos para um período de tempo reduzido.</li>
+        <li><strong>Transparência:</strong> Não há surpresas com o crescimento exponencial de juros, o que traz maior clareza para quem está tomando empréstimos ou investindo.</li>
+    </ul>
+
+    <p><strong>Como Calcular Juros Simples:</strong></p>
+    <p>O cálculo de juros simples é feito com a seguinte fórmula:</p>
+    <pre>
+J = P × i × t
+    </pre>
+    <p>Onde:</p>
+    <ul>
+        <li><strong>J</strong> é o valor dos juros.</li>
+        <li><strong>P</strong> é o valor principal (capital inicial).</li>
+        <li><strong>i</strong> é a taxa de juros por período (em formato decimal, por exemplo, 5% é 0,05).</li>
+        <li><strong>t</strong> é o tempo (em unidades de tempo, como meses ou anos, dependendo da taxa de juros).</li>
+    </ul>
+    <p>Após calcular os juros (<strong>J</strong>), o <strong>montante final (M)</strong> pode ser encontrado pela fórmula:</p>
+    <pre>
+M = P + J
+    </pre>
+
+    <p><strong>Exemplo Prático:</strong></p>
+    <p>Se você investir R$ 1.000,00 a uma taxa de juros de 5% ao mês por 6 meses, o cálculo seria:</p>
+    <pre>
+J = 1000 × 0,05 × 6 = 300
+    </pre>
+    <p>Ou seja, os juros serão R$ 300,00. O montante final será:</p>
+    <pre>
+M = 1000 + 300 = 1300
+    </pre>
+    <p>Portanto, o montante final após 6 meses será de R$ 1.300,00.</p>
+   <p><strong>Texto feito com IA<strong></p>
+
+
+</div>
+<footer>
+    <h3>&copy; Todos os direitos reservados</h3>
+</footer>
+
+<script>
+let Capital = 0, Juros = 0, Tempo = 0, Taxa = 0;
+
+let Calcular = () => {
+    // Pega os valores dos inputs
+    Capital = parseFloat(document.querySelector("#Number1").value);
+    Taxa = parseFloat(document.querySelector("#Number2").value);
+    Tempo = parseFloat(document.querySelector("#Number3").value);
+
+    // Cálculo de juros simples
+    Juros = (Capital * Taxa * Tempo) / 100;
+    let Total = Capital + Juros;
+
+    // Exibe o resultado no HTML
+    document.querySelector("#ValorJuros").innerHTML = `R$ ${Juros.toFixed(2)}`;
+    document.querySelector("#Total").innerHTML = `Total: ${Total.toFixed(2)}`;
+}
+</script>
+</body>
+</html>
