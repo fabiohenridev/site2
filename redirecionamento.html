@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>me veja agora</title>
+    <style>
+
+        body{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        a{
+            font-family: sans-serif;
+            font-size: 30px;
+            text-decoration: none;
+            color: white;
+            background-color: red;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+    </style>
+    <script>
+        function checkAge() {
+            var age = prompt("Você tem mais de 18 anos? (sim/não)");
+
+            if (age.toLowerCase() === "sim") {
+                // Permite o acesso ao vídeo
+                window.location.href = "videoo.html";
+            } else {
+                // Exibe uma mensagem e bloqueia o acesso
+                alert("Você não tem permissão para acessar este conteúdo.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <a href="javascript:void(0);" onclick="checkAge()">VER VÍDEO</a>
+    
+</body>
+</html>
