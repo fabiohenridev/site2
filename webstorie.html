@@ -81,17 +81,17 @@
         text-align: center;
       }
 
-      button {
+      /* Estilizando o link para se parecer com um botão */
+      .button-link {
         padding: 10px 20px;
         background-color: #3228be;
         color: white;
-        border: none;
-        cursor: pointer;
+        text-decoration: none;
         font-size: 16px;
         border-radius: 5px;
       }
 
-      button:hover {
+      .button-link:hover {
         background-color: #283aad;
       }
     </style>
@@ -109,8 +109,9 @@
         <!-- Link e botão "Ler mais" -->
         <amp-story-grid-layer template="vertical">
           <div class="link-wrapper">
-            <a href="https://www.blogueirando.online/" target="_blank">
-              <button>Ler mais</button>
+            <!-- Usando um link estilizado como botão -->
+            <a href="https://www.blogueirando.online/" target="_blank" class="button-link">
+              Ler mais
             </a>
           </div>
         </amp-story-grid-layer>
