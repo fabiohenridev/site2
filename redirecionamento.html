@@ -107,24 +107,22 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 </script>
 <!-- TikTok Pixel Code End -->
 
-    <script>
-        function checkAge() {
-            var age = prompt("Você tem mais de 18 anos? (sim/não)");
-
-            if (age.toLowerCase() === "sim") {
-                // Permite o acesso ao vídeo
-                window.location.href = "videoo.html";
-            } else {
-                // Exibe uma mensagem e bloqueia o acesso
-                alert("Você não tem permissão para acessar este conteúdo.");
-            }
-        }
-    </script>
+   
 </head>
 <body>
 
     <p>O vídeo apenas será exibido após clicar no botão abaixo👇👇</p>
-    <a href="javascript:void(0);" onclick="checkAge()">VER VÍDEO</a>
+    <a href="javascript:void(0);" onclick="Abrir()">VER VÍDEO</a>
     
+
+
+    <script>
+
+const Abrir = () =>{
+    window.location.href = "videoo.html";
+}
+
+
+    </script>
 </body>
 </html>
