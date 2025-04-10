@@ -89,6 +89,15 @@ img{
 <script src="https://kulroakonsu.net/88/tag.min.js" data-zone="138267" async data-cfasync="false"></script>
    -->
 
+   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "c0823970-19f8-4938-a83b-44b4d203c389",
+    });
+  });
+</script>
 
 </head>
 

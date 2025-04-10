@@ -72,6 +72,17 @@ img{
 
     </style>
 <meta name="monetag" content="ff48068cf893ab674294de3b328ec8e4">
+
+<script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "c0823970-19f8-4938-a83b-44b4d203c389",
+    });
+  });
+</script>
+
 </head>
 
 <body>
