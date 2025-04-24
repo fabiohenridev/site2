@@ -217,6 +217,8 @@
             <h1>Xadrez</h1>
         </header>
         
+        <img src="https://images.unsplash.com/photo-1541271696566-5b68308a1d3d" alt="tabuleiro de xadrez">
+
         <section>
             <p>Desafie um amigo no clássico jogo de xadrez! Mova suas peças estrategicamente, proteja seu rei e tente dar xeque-mate no adversário. Divirta-se com este jogo de estratégia!</p>
         </section>
@@ -297,6 +299,9 @@
                     if (verificarXequeMate()) {
                         status.textContent = `Xeque-mate! ${jogadorAtual} venceu!`;
                         jogoAtivo = false;
+                    } else if (verificarEmpate()) {
+                        status.textContent = `Empate!`;
+                        jogoAtivo = false;
                     } else {
                         jogadorAtual = jogadorAtual === 'brancas' ? 'pretas' : 'brancas';
                         status.textContent = `Vez das ${jogadorAtual}`;
@@ -316,37 +321,112 @@
 
         function calcularMovimentos(linha, coluna, peca) {
             const movimentos = [];
-            // Lógica simplificada para movimentos (exemplo para peão)
-            if (peca === '♙') {
-                if (linha === 6 && tabuleiro[5][coluna] === '' && tabuleiro[4][coluna] === '') {
-                    movimentos.push([4, coluna]);
-                }
-                if (tabuleiro[linha - 1][coluna] === '') {
-                    movimentos.push([linha - 1, coluna]);
-                }
-                // Captura diagonal
-                if (coluna > 0 && tabuleiro[linha - 1][coluna - 1].match(/[♟♜♞♝♛♚]/)) {
-                    movimentos.push([linha - 1, coluna - 1]);
-                }
-                if (coluna < 7 && tabuleiro[linha - 1][coluna + 1].match(/[♟♜♞♝♛♚]/)) {
-                    movimentos.push([linha - 1, coluna + 1]);
-                }
-            } else if (peca === '♟') {
-                if (linha === 1 && tabuleiro[2][coluna] === '' && tabuleiro[3][coluna] === '') {
-                    movimentos.push([3, coluna]);
-                }
-                if (tabuleiro[linha + 1][coluna] === '') {
-                    movimentos.push([linha + 1, coluna]);
-                }
-                // Captura diagonal
-                if (coluna > 0 && tabuleiro[linha + 1][coluna - 1].match(/[♙♖♘♗♕♔]/)) {
-                    movimentos.push([linha + 1, coluna - 1]);
-                }
-                if (coluna < 7 && tabuleiro[linha + 1][coluna + 1].match(/[♙♖♘♗♕♔]/)) {
-                    movimentos.push([linha + 1, coluna + 1]);
+            const isBrancas = peca.match(/[♙♖♘♗♕♔]/);
+            const direcao = isBrancas ? -1 : 1;
+            const linhaInicial = isBrancas ? 6 : 1;
+            const inimigoRegex = isBrancas ? /[♟♜♞♝♛♚]/ : /[♙♖♘♗♕♔]/;
+
+            // Função auxiliar para verificar se a posição é válida
+            function isValido(l, c) {
+                return l >= 0 && l < 8 && c >= 0 && c < 8;
+            }
+
+            // Função auxiliar para adicionar movimentos em uma direção até encontrar obstáculo
+            function adicionarMovimentosDirecao(l, c, dl, dc) {
+                let novaL = l + dl;
+                let novaC = c + dc;
+                while (isValido(novaL, novaC)) {
+                    if (tabuleiro[novaL][novaC] === '') {
+                        movimentos.push([novaL, novaC]);
+                    } else if (tabuleiro[novaL][novaC].match(inimigoRegex)) {
+                        movimentos.push([novaL, novaC]);
+                        break;
+                    } else {
+                        break;
+                    }
+                    novaL += dl;
+                    novaC += dc;
                 }
             }
-            // Adicione lógica para outras peças conforme necessário
+
+            // Peão
+            if (peca === '♙' || peca === '♟') {
+                // Movimento para frente
+                if (isValido(linha + direcao, coluna) && tabuleiro[linha + direcao][coluna] === '') {
+                    movimentos.push([linha + direcao, coluna]);
+                    // Movimento duplo inicial
+                    if (linha === linhaInicial && tabuleiro[linha + 2 * direcao][coluna] === '') {
+                        movimentos.push([linha + 2 * direcao, coluna]);
+                    }
+                }
+                // Capturas diagonais
+                if (isValido(linha + direcao, coluna - 1) && tabuleiro[linha + direcao][coluna - 1].match(inimigoRegex)) {
+                    movimentos.push([linha + direcao, coluna - 1]);
+                }
+                if (isValido(linha + direcao, coluna + 1) && tabuleiro[linha + direcao][coluna + 1].match(inimigoRegex)) {
+                    movimentos.push([linha + direcao, coluna + 1]);
+                }
+            }
+
+            // Torre
+            if (peca === '♖' || peca === '♜') {
+                adicionarMovimentosDirecao(linha, coluna, 0, 1); // Direita
+                adicionarMovimentosDirecao(linha, coluna, 0, -1); // Esquerda
+                adicionarMovimentosDirecao(linha, coluna, 1, 0); // Baixo
+                adicionarMovimentosDirecao(linha, coluna, -1, 0); // Cima
+            }
+
+            // Cavalo
+            if (peca === '♘' || peca === '♞') {
+                const movimentosCavalo = [
+                    [-2, -1], [-2, 1], [-1, -2], [-1, 2],
+                    [1, -2], [1, 2], [2, -1], [2, 1]
+                ];
+                for (let [dl, dc] of movimentosCavalo) {
+                    const novaL = linha + dl;
+                    const novaC = coluna + dc;
+                    if (isValido(novaL, novaC) && (!tabuleiro[novaL][novaC] || tabuleiro[novaL][novaC].match(inimigoRegex))) {
+                        movimentos.push([novaL, novaC]);
+                    }
+                }
+            }
+
+            // Bispo
+            if (peca === '♗' || peca === '♝') {
+                adicionarMovimentosDirecao(linha, coluna, 1, 1); // Sudeste
+                adicionarMovimentosDirecao(linha, coluna, 1, -1); // Sudoeste
+                adicionarMovimentosDirecao(linha, coluna, -1, 1); // Nordeste
+                adicionarMovimentosDirecao(linha, coluna, -1, -1); // Noroeste
+            }
+
+            // Rainha
+            if (peca === '♕' || peca === '♛') {
+                adicionarMovimentosDirecao(linha, coluna, 0, 1); // Direita
+                adicionarMovimentosDirecao(linha, coluna, 0, -1); // Esquerda
+                adicionarMovimentosDirecao(linha, coluna, 1, 0); // Baixo
+                adicionarMovimentosDirecao(linha, coluna, -1, 0); // Cima
+                adicionarMovimentosDirecao(linha, coluna, 1, 1); // Sudeste
+                adicionarMovimentosDirecao(linha, coluna, 1, -1); // Sudoeste
+                adicionarMovimentosDirecao(linha, coluna, -1, 1); // Nordeste
+                adicionarMovimentosDirecao(linha, coluna, -1, -1); // Noroeste
+            }
+
+            // Rei
+            if (peca === '♔' || peca === '♚') {
+                const movimentosRei = [
+                    [-1, -1], [-1, 0], [-1, 1],
+                    [0, -1], [0, 1],
+                    [1, -1], [1, 0], [1, 1]
+                ];
+                for (let [dl, dc] of movimentosRei) {
+                    const novaL = linha + dl;
+                    const novaC = coluna + dc;
+                    if (isValido(novaL, novaC) && (!tabuleiro[novaL][novaC] || tabuleiro[novaL][novaC].match(inimigoRegex))) {
+                        movimentos.push([novaL, novaC]);
+                    }
+                }
+            }
+
             return movimentos;
         }
 
@@ -354,7 +434,13 @@
             const movimentos = calcularMovimentos(linhaOrigem, colunaOrigem, tabuleiro[linhaOrigem][colunaOrigem]);
             for (let [l, c] of movimentos) {
                 if (l === linhaDestino && c === colunaDestino) {
-                    tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem];
+                    // Promoção de peão (simplificada: promove para rainha)
+                    if ((tabuleiro[linhaOrigem][colunaOrigem] === '♙' && linhaDestino === 0) ||
+                        (tabuleiro[linhaOrigem][colunaOrigem] === '♟' && linhaDestino === 7)) {
+                        tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem] === '♙' ? '♕' : '♛';
+                    } else {
+                        tabuleiro[linhaDestino][colunaDestino] = tabuleiro[linhaOrigem][colunaOrigem];
+                    }
                     tabuleiro[linhaOrigem][colunaOrigem] = '';
                     criarTabuleiro();
                     return true;
@@ -372,9 +458,73 @@
         }
 
         function verificarXequeMate() {
-            // Lógica simplificada para xeque-mate
-            // Para um jogo completo, implemente verificação de xeque e movimentos possíveis
+            // Verifica se o rei adversário está em xeque-mate
+            const reiInimigo = jogadorAtual === 'brancas' ? '♚' : '♔';
+            let reiPos = null;
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    if (tabuleiro[i][j] === reiInimigo) {
+                        reiPos = [i, j];
+                        break;
+                    }
+                }
+                if (reiPos) break;
+            }
+            if (!reiPos) return false;
+
+            // Verifica se o rei está em xeque
+            const estaEmXeque = estaEmAtaque(reiPos[0], reiPos[1], jogadorAtual === 'brancas' ? 'pretas' : 'brancas');
+            if (!estaEmXeque) return false;
+
+            // Verifica se o rei ou qualquer peça pode escapar
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    if (tabuleiro[i][j] && (jogadorAtual === 'brancas' ? tabuleiro[i][j].match(/[♟♜♞♝♛♚]/) : tabuleiro[i][j].match(/[♙♖♘♗♕♔]/))) {
+                        const movimentos = calcularMovimentos(i, j, tabuleiro[i][j]);
+                        for (let [l, c] of movimentos) {
+                            // Simula o movimento
+                            const peca = tabuleiro[i][j];
+                            const destino = tabuleiro[l][c];
+                            tabuleiro[l][c] = peca;
+                            tabuleiro[i][j] = '';
+                            const aindaEmXeque = estaEmAtaque(reiPos[0], reiPos[1], jogadorAtual === 'brancas' ? 'pretas' : 'brancas');
+                            tabuleiro[i][j] = peca;
+                            tabuleiro[l][c] = destino;
+                            if (!aindaEmXeque) return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        }
+
+        function estaEmAtaque(linha, coluna, atacante) {
+            const inimigoRegex = atacante === 'brancas' ? /[♙♖♘♗♕♔]/ : /[♟♜♞♝♛♚]/;
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    if (tabuleiro[i][j] && tabuleiro[i][j].match(inimigoRegex)) {
+                        const movimentos = calcularMovimentos(i, j, tabuleiro[i][j]);
+                        for (let [l, c] of movimentos) {
+                            if (l === linha && c === coluna) return true;
+                        }
+                    }
+                }
+            }
             return false;
+        }
+
+        function verificarEmpate() {
+            // Verifica empate por falta de movimentos válidos (stalemate)
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    if (tabuleiro[i][j] && (jogadorAtual === 'brancas' ? tabuleiro[i][j].match(/[♙♖♘♗♕♔]/) : tabuleiro[i][j].match(/[♟♜♞♝♛♚]/))) {
+                        if (calcularMovimentos(i, j, tabuleiro[i][j]).length > 0) {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         function resetarJogo() {
