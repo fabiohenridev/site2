@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '3039782552846318');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=3039782552846318&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y8Y59HKRC5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-Y8Y59HKRC5');
+    </script>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="jogo da velha, tic-tac-toe, jogo online, dois jogadores, entretenimento">
+    <meta name="description" content="Jogue o clássico Jogo da Velha online! Desafie um amigo, alterne entre X e O, e veja quem vence primeiro. Simples e divertido!">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="https://www.blogueirando.online/mouth.png" type="image/png">
+    <title>Jogo da Velha - Blogueirando</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        * {
+            font-family: "Poppins", sans-serif;
+            font-display: swap;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .jogo-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .tabuleiro {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            margin: 20px auto;
+            justify-content: center;
+        }
+
+        .celula {
+            width: 100px;
+            height: 100px;
+            background-color: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .celula:hover {
+            background-color: #e0e0e0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #c0392b;
+        }
+
+        #status {
+            font-size: 20px;
+            color: #3498db;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 25px 0;
+            border-radius: 0 5px 5px 0;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .tabuleiro {
+                grid-template-columns: repeat(3, 80px);
+            }
+
+            .celula {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+
+            button {
+                font-size: 14px;
+            }
+
+            .jogo-container {
+                padding: 15px;
+            }
+        }
+    </style>
+    <meta name="monetag" content="ff48068cf893ab674294de3b328ec8e4">
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8726826090179983"
+    crossorigin="anonymous"></script>
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Jogo da Velha",
+          "description": "Jogue o clássico Jogo da Velha online! Desafie um amigo, alterne entre X e O, e veja quem vence primeiro. Simples e divertido!",
+          "url": "https://www.blogueirando.online/jogo-da-velha.html",
+          "image": "https://www.blogueirando.online/mouth.png",
+          "author": {
+            "@type": "Person",
+            "name": "Blogueirando"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Blogueirando",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.blogueirando.online/mouth.png"
+            }
+          },
+          "datePublished": "2025-04-24T08:00:00-03:00",
+          "dateModified": "2025-04-24T08:00:00-03:00",
+          "keywords": [
+            "jogo da velha",
+            "tic-tac-toe",
+            "jogo online",
+            "dois jogadores",
+            "entretenimento"
+          ]
+        }
+    </script>
+</head>
+
+<body>
+    <a href="home.html">← Voltar para a Página Inicial</a>
+    
+    <article>
+        <header>
+            <h1>Jogo da Velha</h1>
+        </header>
+
+        <section>
+            <p>Desafie um amigo no clássico Jogo da Velha! Alterne entre X e O, clique nas células para fazer sua jogada e veja quem consegue alinhar três símbolos primeiro. Divirta-se!</p>
+        </section>
+
+        <section class="jogo-container">
+            <h2>Jogue Agora</h2>
+            <div id="status">Vez do jogador: X</div>
+            <div class="tabuleiro" id="tabuleiro">
+                <div class="celula" data-index="0"></div>
+                <div class="celula" data-index="1"></div>
+                <div class="celula" data-index="2"></div>
+                <div class="celula" data-index="3"></div>
+                <div class="celula" data-index="4"></div>
+                <div class="celula" data-index="5"></div>
+                <div class="celula" data-index="6"></div>
+                <div class="celula" data-index="7"></div>
+                <div class="celula" data-index="8"></div>
+            </div>
+            <button onclick="resetarJogo()">Reiniciar Jogo</button>
+        </section>
+
+        <section>
+            <div class="highlight-box">
+                <p><strong>Dica:</strong> Tente bloquear seu oponente enquanto planeja sua vitória. Alinhar três símbolos em linha, coluna ou diagonal garante a vitória!</p>
+            </div>
+        </section>
+    </article>
+    <strong><p>Conteúdo produzido com auxílio de inteligência artificial</p></strong>
+    
+    <footer>
+        <h3>© Todos os direitos reservados | Blogueirando 2025</h3>
+    </footer>
+
+    <script>
+        let jogadorAtual = 'X';
+        let tabuleiro = ['', '', '', '', '', '', '', '', ''];
+        let jogoAtivo = true;
+
+        const combinacoesVitoria = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Linhas
+            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Colunas
+            [0, 4, 8], [2, 4, 6] // Diagonais
+        ];
+
+        const celulas = document.querySelectorAll('.celula');
+        const status = document.getElementById('status');
+
+        celulas.forEach(celula => {
+            celula.addEventListener('click', () => jogada(celula));
+        });
+
+        function jogada(celula) {
+            const index = celula.dataset.index;
+
+            if (tabuleiro[index] === '' && jogoAtivo) {
+                tabuleiro[index] = jogadorAtual;
+                celula.textContent = jogadorAtual;
+
+                if (verificarVitoria()) {
+                    status.textContent = `Jogador ${jogadorAtual} venceu!`;
+                    jogoAtivo = false;
+                    return;
+                }
+
+                if (verificarEmpate()) {
+                    status.textContent = 'Empate!';
+                    jogoAtivo = false;
+                    return;
+                }
+
+                jogadorAtual = jogadorAtual === 'X' ? 'O' : 'X';
+                status.textContent = `Vez do jogador: ${jogadorAtual}`;
+            }
+        }
+
+        function verificarVitoria() {
+            return combinacoesVitoria.some(combinacao => {
+                return combinacao.every(index => {
+                    return tabuleiro[index] === jogadorAtual;
+                });
+            });
+        }
+
+        function verificarEmpate() {
+            return tabuleiro.every(celula => celula !== '');
+        }
+
+        function resetarJogo() {
+            jogadorAtual = 'X';
+            tabuleiro = ['', '', '', '', '', '', '', '', ''];
+            jogoAtivo = true;
+            status.textContent = `Vez do jogador: ${jogadorAtual}`;
+            celulas.forEach(celula => {
+                celula.textContent = '';
+            });
+        }
+    </script>
+</body>
+</html>
