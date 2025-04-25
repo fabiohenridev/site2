@@ -186,6 +186,10 @@
 
         @media (min-width: 800px) {
 
+.btn{
+    display: none;
+}
+
 .PostsPrincipais{
 
 display: flex;
@@ -252,6 +256,120 @@ margin-right: 10%;
             border-radius: 10px;
             color: white;
         }
+
+        .visibleMenu {
+            background-color: rgb(32, 32, 32);
+            padding: 15px 0;
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            z-index: 999;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-family: "Poppins", sans-serif;
+        }
+
+        .menuCategory {
+            position: relative;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .menuCategory h4 {
+            color: white;
+            font-size: 18px;
+            margin: 0;
+            padding: 10px 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .menuCategory h4:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        .menuCategory ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            background-color: rgb(40, 40, 40);
+            border-radius: 5px;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.3s ease-out;
+            position: absolute;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .menuCategory:hover ul {
+            max-height: 300px; /* Adjust based on content */
+        }
+
+        .menuCategory a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 14px;
+            display: block;
+            transition: background-color 0.2s ease;
+        }
+
+        .menuCategory a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (min-width: 800px) {
+            
+           .menuLateral{
+            display: none;
+           }
+
+            main{
+                margin-top: 150px;
+            }
+            
+            .visibleMenu {
+                padding: 20px 0;
+                gap: 40px;
+            }
+
+            .menuCategory {
+                min-width: 200px;
+            }
+
+            .menuCategory h4 {
+                font-size: 20px;
+                padding: 12px 20px;
+            }
+
+            .menuCategory a {
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 799px) {
+            .menuCategory ul {
+                position: static;
+                background-color: transparent;
+            }
+
+            .menuCategory:hover ul {
+                max-height: none;
+            }
+        }
+    @media (max-width: 800px) {
+        .visibleMenu{
+            display: none;
+        }
+    }
+
     </style>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" href="https://www.blogueirando.online/mouth.png" type="image/png">
@@ -290,7 +408,7 @@ margin-right: 10%;
             <a target="_blank" href="página-contato.html">Contato</a>
             <a target="_blank" href="politicasdeprivacidade.html">Políticas de privacidade</a>
             <a target="_blank" href="Juros.html">Calculadora juros simples</a>
-            <a target="_blank" href="https://www.instagram.com/blogueirando.online/">Instagram</a>
+            <a target="_blank" href="https://www.instagram.com/blogueirando.noticias/">Instagram</a>
             <a target="_blank" href="https://www.tiktok.com/@blogueirando.onli">Tiktok</a>
         </div>
 
@@ -300,6 +418,41 @@ margin-right: 10%;
                 class="bi bi-list btn"></i></button>
         <h1>Blogueirando</h1>
     </header>
+
+    <nav class="visibleMenu">
+        <div class="menuCategory">
+            <h4>Artigos</h4>
+            <ul>
+                <li><a target="_blank" href="home.html">Notícias</a></li>
+                <li><a target="_blank" href="home.html">Curiosidades</a></li>
+            </ul>
+        </div>
+        <div class="menuCategory">
+            <h4>Jogos</h4>
+            <ul>
+                <li><a target="_blank" href="sorteio-numeros.html">Sorteio de números</a></li>
+                <li><a target="_blank" href="jogo-da-velha.html">Jogo da velha</a></li>
+                <li><a target="_blank" href="xadrez.html">Jogar xadrez</a></li>
+            </ul>
+        </div>
+        <div class="menuCategory">
+            <h4>Sobre</h4>
+            <ul>
+                <li><a target="_blank" href="Sobre.html">Sobre Nós</a></li>
+                <li><a target="_blank" href="página-contato.html">Contato</a></li>
+                <li><a target="_blank" href="politicasdeprivacidade.html">Políticas de privacidade</a></li>
+                <li><a target="_blank" href="Juros.html">Calculadora juros simples</a></li>
+            </ul>
+        </div>
+        <div class="menuCategory">
+            <h4>Redes Sociais</h4>
+            <ul>
+                <li><a target="_blank" href="https://www.instagram.com/blogueirando.noticias/">Instagram</a></li>
+                <li><a target="_blank" href="https://www.tiktok.com/@blogueirando.onli">Tiktok</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <main>
 
         <h2>web stories</h2>
@@ -488,7 +641,7 @@ margin-right: 10%;
 
     <footer>
 
-        <a target="_blank" style="color: black;" href="https://www.instagram.com/blogueirando.online/"><span><i
+        <a target="_blank" style="color: black;" href="https://www.instagram.com/blogueirando.noticias/"><span><i
                     class="bi bi-instagram"></i> Siga-nos no instagram</span></a>
         <h3>&copy; Todos os direitos reservados<h3>
     </footer>
